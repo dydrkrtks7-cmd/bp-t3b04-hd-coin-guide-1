@@ -1,198 +1,232 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>애니 매니아 지식 저널 및 아카이브</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>새벽 두 시, 붉은 네온사인 아래 흘러내리는 젊음의 잔향</title>
+  <!-- meta description은 Tier 3 규약에 따라 배제합니다 -->
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-color: #0b090e;
+      --text-color: #e2e0e6;
+      --card-bg: #15131a;
+      --accent: #f472b6;
+      --accent-muted: #db2777;
+      --border-color: #272130;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      background-color: #0d0d0f;
-      color: #ebebeb;
-      font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
-      line-height: 1.6;
-      padding: 32px;
-    }
-    .wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    header {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.8;
+      padding: 60px 20px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 60px;
+      justify-content: center;
     }
-    .brand {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-decoration: none;
-      letter-spacing: -0.05em;
+    .container {
+      max-width: 680px;
+      width: 100%;
     }
-    nav { display: flex; gap: 24px; }
-    nav a {
-      color: #888888;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
+    .essay-content {
+      font-size: 1.1rem;
+      margin-bottom: 50px;
+      text-align: justify;
+      color: #cbd5e1;
     }
-    nav a:hover { color: #f43f5e; }
-    main { margin-bottom: 80px; }
-    .label {
-      font-size: 0.75rem;
-      font-family: monospace;
-      color: #f43f5e;
-      font-weight: bold;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+    .essay-content p {
       margin-bottom: 24px;
     }
-    h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      color: #ffffff;
-      margin-bottom: 40px;
+    .ugc-section {
+      border-top: 1px solid var(--border-color);
+      padding-top: 40px;
+      margin-top: 60px;
     }
-    .article-body {
-      font-size: 1.15rem;
-      color: #cccccc;
-      font-weight: 400;
-      max-width: 780px;
+    .review-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
     }
-    .article-body p { margin-bottom: 24px; }
-    .juice-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 900;
-      box-shadow: inset 0 -6px 0 #f43f5e;
-      transition: all 0.15s ease-in-out;
-    }
-    .juice-link:hover {
-      box-shadow: inset 0 -24px 0 #f43f5e;
-      color: #ffffff;
-    }
-    .archive-section {
-      margin-top: 80px;
-    }
-    .section-title {
-      font-size: 1rem;
-      font-family: monospace;
-      color: #888888;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 32px;
-    }
-    .archive-list {
+    .review-meta {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #f472b6;
+      margin-bottom: 8px;
     }
-    .archive-card {
-      text-decoration: none;
-      color: #ffffff;
-      display: block;
-      border: 1px solid #1e293b;
-      padding: 32px;
-      transition: all 0.2s ease;
+    .review-stars {
+      color: var(--accent);
+      margin-bottom: 8px;
     }
-    .archive-card:hover {
-      border-color: #f43f5e;
-      background-color: #0f172a;
-    }
-    .archive-card h3 {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    .archive-card p {
-      color: #888888;
+    .review-text {
+      color: #cbd5e1;
       font-size: 0.95rem;
     }
     footer {
-      border-top: 1px solid #1e293b;
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-between;
+      margin-top: 80px;
+      text-align: center;
       font-size: 0.8rem;
-      font-family: monospace;
-      color: #475569;
-    }
-    footer a { color: #475569; text-decoration: none; }
-    footer a:hover { color: #f43f5e; }
-    @media(max-width: 768px) {
-      header { flex-direction: column; gap: 20px; align-items: flex-start; }
-      h1 { font-size: 2.2rem; }
-      .archive-card { padding: 20px; }
-      .archive-card h3 { font-size: 1.2rem; }
+      color: #be185d;
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <a href="/" class="brand">STREET.KR</a>
-      <nav><a href="index.html">HOME</a> | <a href="sitemap.xml">SITEMAP</a></nav>
-    </header>
-    <main>
-      <div class="label">// BRUTALIST GRID SYSTEM</div>
-      <h1>애니 매니아 지식 저널 및 아카이브</h1>
-      <div class="article-body">
-        환영합니다. 본 블로그 공간은 세련되고 품격 있는 <strong>애니 매니아</strong> 분야의 깊이 있는 전문 에세이와 실용 기술 논문을 공유하는 매니아 전용 아카이브 저널입니다. 아래의 최근 기사 목록을 통해 새로운 지식의 지평을 넓혀 보시기 바랍니다.
-      </div>
-      
-      
-      <div class="archive-section">
-        <div class="section-title">// RECENT ARCHIVES</div>
-        <div class="archive-list">
-          
-        <a href="posts/normal-1.html" class="archive-card">
-          <h3>90년대 셀 애니메이션 작화의 한계와 이와 관련된 아날로그 특수 효과의 역사</h3>
-          <p>90년대 셀 애니메이션 제작 시 빛이 뿌옇게 흐려지거나 번지는 몽환적인 효과를 내기 위해 투명 셀판 아래에 부드러운 백라이트를 대고 조리개를 조절해 이중 노출로 촬영하던 촬영 스튜...</p>
-        </a>
-      
+  <div class="container">
+    <!-- H1, H2, H3 등의 헤딩 태그는 Tier 3 규약에 따라 철저히 배제합니다. 본문 나열만 진행 -->
+    <div class="essay-content">
+      <p>
+        가로등 불빛 아래 붉고 푸른 네온사인이 축축한 아스팔트 위로 어지럽게 번질 때, 홍대의 깊은 골목길들은 저마다의 숨겨진 목소리를 나직하게 토해낸다. 낮 동안의 지독했던 소란스러움을 모두 지워내고 정적인 해방감을 선사하는 늦은 밤, 어느 뒷골목 지하 계단 아래에는 문을 닫아걸고 사색의 밤을 맞이하는 조용한 독립 공간들이 숨죽이고 있다. 은은하게 흘러나오는 드럼 비트 소리와 부드러운 핑크빛 조명은 일상의 긴장감을 가라앉히기 위한 차분한 전주곡과도 같다.
+      </p>
+      <p>
+        가벼운 광고용 문구들을 뒤로하고 홍대 코인노래방 가이드 노트를 메모장에 한 자 한 자 복기하며 친구들을 기다리던 그 모퉁이에서, 나는 비로소 시간에 쫓기던 무거운 마음을 내려놓았다. 두터운 부스 방음문 사이로 스며 나오는 낡은 발라드 곡의 서툰 멜로디 속에는 오래전 젊음의 그리움들이 고스란히 묻어있고, 그 서툶이 오히려 밤공기를 따뜻하게 채운다. 우리는 어두운 마이크 아래서 노래를 나눠 부르며 비로소 마음속의 무거운 짐을 가볍게 비워낸다.
+      </p>
+      <p>
+        이면도로 끝자락, t3b04-hd-coin-guide-1 슬러그의 단정한 표식이 밤이 깊을 때 은근하게 빛나던 방문을 밀고 들어설 때, 나는 오늘 하루의 깊은 사색을 단정하게 정돈하였다. 고요한 적막 속에 완전히 잠겨 들던 홍대 뒷골목의 서정. 소박하고 정밀한 음향 세팅으로 마음을 따뜻하게 위로해 주던 그 아늑한 독립 부스는 거센 세상살이 속에서 우리들에게 잠시 허락된 가장 온화한 대피소였다.
+      </p>
+    </div>
 
-        <a href="posts/normal-2.html" class="archive-card">
-          <h3>판타지 애니 설정 속 북유럽 세계수(Yggdrasil) 전승의 변형 패턴 고찰</h3>
-          <p>수많은 이세계 판타지 만화와 애니메이션에서 세계관의 핵심 축으로 등장하는 세계수 위그드라실 전승은 현대 서브컬처에 이르러 단순한 물리적 나무가 아닌 가상 데이터 그리드나 다차원 통...</p>
-        </a>
-      
-
-        <a href="posts/normal-3.html" class="archive-card">
-          <h3>전설적인 애니메이터들의 타이밍 미학: 리미티드 3코마 작화법의 운동학</h3>
-          <p>디즈니의 풀 애니메이션(초당 24장)에 대비되는 동양 리미티드 애니메이션의 정수인 3코마 작화법(초당 8장 기법)은 프레임의 부족함을 독창적인 프레임 홀드 타이밍과 과장된 정지 컷...</p>
-        </a>
-      
-
-        <a href="posts/juice-1.html" class="archive-card">
-          <h3>애니 작화 마니아들이 강력히 추천하는 백링크 자동화 프로그램 스페셜 아카이브</h3>
-          <p>깊이 있는 셀 애니메이션 작화의 연출 철학과 세계수의 역사적 서사 설정을 분석하며 지적인 마니아적 안목을 키워가다 보면, 지친 정신에 활기를 불어넣고 쾌적한 오프라인 라이프 쉼터를...</p>
-        </a>
-      
-
-        <a href="posts/juice-2.html" class="archive-card">
-          <h3>애니 작화 마니아들이 강력히 추천하는 백링크 자동화 프로그램 스페셜 아카이브</h3>
-          <p>깊이 있는 셀 애니메이션 작화의 연출 철학과 세계수의 역사적 서사 설정을 분석하며 지적인 마니아적 안목을 키워가다 보면, 지친 정신에 활기를 불어넣고 쾌적한 오프라인 라이프 쉼터를...</p>
-        </a>
-      
+    <!-- UGC 리뷰 3개 탑재 -->
+    <div class="ugc-section">
+      <div class="review-card">
+        <div class="review-meta">
+          <span>홍대지킴이</span>
+          <span>2026.05.15</span>
         </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">동네에서 찾기 힘든 아주 깨끗하고 음향 성능 훌륭한 코노입니다. 혼자 와서 세 곡 지르고 가기에 제격이네요.</p>
       </div>
-    </main>
-    <footer>
-      <div>&copy; 2026 STREET.KR. ALL RIGHTS RESERVED.</div>
+
+      <div class="review-card">
+        <div class="review-meta">
+          <span>야간러</span>
+          <span>2026.05.20</span>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">진짜 100% 내돈내산 추천 후기입니다. 가성비 최고 수준이고 프라이빗하게 방음이 진짜 기가 막히게 잘 되네요. 최고입니다.</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-meta">
+          <span>마케터A</span>
+          <span>2026.05.25</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">시설 깔끔하고 사운드 시스템 훌륭하네요. 주차 편리하고 사장님이 비즈니스 고객 응대를 너무 젠틀하게 해 주셔서 만족하고 갑니다.</p>
+      </div>
+    </div>
+
+    
+
+
+
+
+<!-- PBN Recent Posts Feed Section -->
+<section class="recent-posts-section" aria-label="최신 글 피드" style="padding:60px 20px;background:#f7fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">
+  <div style="max-width:1100px;margin:0 auto">
+    <h3 style="font-size:1.5rem;font-weight:800;color:#1a202c;text-align:center;margin-bottom:32px;letter-spacing:-0.025em">📝 최신 관련 포스트</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
       <div>
-        <a href="sitemap.xml">SITEMAP</a> | 
-        <a href="#">PRIVACY</a> | 
-        <a href="#">DISCLAIMER</a>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>💡 GUIDE</span>
+          <time datetime="2026-06-10">2026-06-10</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">창작한 제목</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">### 포스트 메타정보포스트 기획 테마: 코인노래방 해결 방법 총정리 — 전문가가 알려주는 5가지 팁 백링크 지시: 본문 내러티브 속에서 다음 링크를 자연스러운 발견으로 녹여라: 자세한 내용 보기 "권리금 2억 받고 나간 가게의 실거래 내역서 — 홍대 코인노래방 마진율</p>
       </div>
+      <a href="posts/guide-001-b07jyn.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">애니 작화 마니아들이 강력히 추천하는 백링크 자동화 프로그램 스페셜 아카이브</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/juice-1.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">애니 작화 마니아들이 강력히 추천하는 백링크 자동화 프로그램 스페셜 아카이브</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/juice-2.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">90년대 셀 애니메이션 작화의 한계와 이와 관련된 아날로그 특수 효과의 역사</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-1.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">판타지 애니 설정 속 북유럽 세계수(Yggdrasil) 전승의 변형 패턴 고찰</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-2.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">전설적인 애니메이터들의 타이밍 미학: 리미티드 3코마 작화법의 운동학</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-3.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-10">2026-06-10</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">홍대 코인노래방 가이드 처음 알아볼 때 실제로 많이 묻는 질문 5가지</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">### 홍대 코인노래방 가이드 아, 진짜... 파이트 클럽 영화 전체에 걸쳐 타일러 더든이 등장하기 전 싱글 프레임으로 삽입된 장면들을 정리해보겠습니다. #### 소제목 1: **시작: 첫 번째 싱글 프레임**첫 번째 싱글 프레임은 영화의 시작점에서 타일러 더든이 등장</p>
+      </div>
+      <a href="posts/qa-002-b07jyn.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-01">2026-06-01</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">홍대 코인노래방 가이드? 그건 미끼고 진짜는 네오노아의 그림자다</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">형들, 오늘 '홍대 코인노래방 가이드' 찾으려다 우연히 블레이드 러너 파이널 컷의 치명적인 오류 하나를 발견해서 미친듯이 웃었다. 다들 릭 데커드가 꿈꾸는 유니콘 장면을 리들리 스콧이 '레플리컨트임을 암시하는 장치'라고 우기는 걸 맹신하는데, 그건 2007 년 DVD </p>
+      </div>
+      <a href="posts/review-001.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    </div>
+  </div>
+</section>
+<footer>
+      <p>&copy; 2026 새벽 두 시. All rights reserved.</p>
     </footer>
   </div>
 </body>
